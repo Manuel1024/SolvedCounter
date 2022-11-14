@@ -1,0 +1,8 @@
+table, td, th {
+    border: 1px #000000 solid;
+    text-align: left;
+}
+
+td {
+    min-width: 20px;
+}
