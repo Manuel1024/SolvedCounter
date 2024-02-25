@@ -9,7 +9,7 @@ judgesList.push(new AOJ(input_forms, solved_table));
 judgesList.push(new AtCoder(input_forms, solved_table));
 judgesList.push(new Codeforces(input_forms, solved_table));
 judgesList.push(new yukicoder(input_forms, solved_table));
-judgesList.push(new TopCoder(input_forms, solved_table));
+//judgesList.push(new TopCoder(input_forms, solved_table));
 
 const totalRow = solved_table.insertRow();
 const totalCaption = document.createElement('th');
@@ -41,7 +41,7 @@ const handler = function() {
                 tweetText += obj.displayName() + ': ' + obj.count + '\n';
             }
             tweetText += 'Total: ' + total + '\n';
-            tweetbutton.href = 'https://twitter.com/share?'
+            tweetbutton.href = 'https://twitter.com/intent/tweet?'
             + 'text=' + encodeURIComponent(tweetText)
             + '&url=' + encodeURIComponent(location.href);
             tweetbutton.className = 'twitter-share-button';
