@@ -9,7 +9,7 @@ judgesList.push(new AOJ(input_forms, solved_table));
 judgesList.push(new AtCoder(input_forms, solved_table));
 judgesList.push(new Codeforces(input_forms, solved_table));
 judgesList.push(new yukicoder(input_forms, solved_table));
-//judgesList.push(new TopCoder(input_forms, solved_table));
+judgesList.push(new TopCoder(input_forms, solved_table));
 
 const totalRow = solved_table.insertRow();
 const totalCaption = document.createElement('th');

@@ -255,9 +255,9 @@ class TopCoder{
             try{
                 this.cnt = 0;
                 this.cell.textContent = '';
-                const tcendpoint = 'https://api.topcoder.com/v2/users/'
+                const tcendpoint = 'https://api.topcoder.com/v5/members/'
                 + encodeURIComponent(this.username.value)
-                + '/statistics/data/srm';
+                + '/stats';
                 fetch(tcendpoint)
                     .then((response) => {
                         if(!response.ok){
@@ -266,10 +266,14 @@ class TopCoder{
                         return response.json()
                     })
                     .then((json) => {
-                        const data1 = json['Divisions']['Division I']['Level Total'];
-                        const data2 = json['Divisions']['Division II']['Level Total'];
-                        this.cnt += data1['submitted']-data1['failedChallenge']-data1['failedSys.Test'];
-                        this.cnt += data2['submitted']-data2['failedChallenge']-data2['failedSys.Test'];
+                        const data1 = json['0']['DATA_SCIENCE']['SRM']['division1'];
+                        const data2 = json['0']['DATA_SCIENCE']['SRM']['division2'];
+                        for(const obj of data1){
+                            this.cnt += obj['problemsSubmitted']-obj['problemsSysByTest']-obj['problemsFailed'];
+                        }
+                        for(const obj of data2){
+                            this.cnt += obj['problemsSubmitted']-obj['problemsSysByTest']-obj['problemsFailed'];
+                        }
                         this.cell.textContent = this.cnt;
                         resolve();
                     })
